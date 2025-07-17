@@ -1,0 +1,44 @@
+/* .App {
+  text-align: center;
+} */
+
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+} */
+
+.App {
+  background-color: #D0DFFF;
+  min-height: 100vh;
+  display: flex;
+  /* flex-direction: column;  */
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  /* color: white;  */
+}
+.Auth {
+  background-color: #D0DFFF;
+  min-height: 100vh;
+  display: flex;
+  /* flex-direction: column;  */
+  /* align-items: center; */
+  padding-top: 5rem;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.Content {
+  background-color: #EDF2FE;
+  min-height: 92vh;
+  width: 94%;
+  border-radius: 21px;
+
+    /* NEW: Flex layout to support footer at bottom */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* padding: 2rem; */
+    box-sizing: border-box;
+}
+
