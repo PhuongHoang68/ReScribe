@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { CheckboxGroup } from "@radix-ui/themes";
-import { Checkbox } from "@radix-ui/react-checkbox";          // or from another package if you're using a custom UI
-import { CheckIcon } from "@radix-ui/react-icons";
 import { TextArea } from "@radix-ui/themes";
 import "./styles.css";
 
@@ -19,14 +17,20 @@ export default function GenerateOutput() {
 
   const handleGenerate = async () => {
     if (selectedOutputs.length === 0 || content.trim() === "") return;
+    console.log("CONTENT", content);
+    console.log("SELECTEDOUTPUTS", selectedOutputs);
 
     try {
-      const response = await fetch("/api/generate", {
+      const response = await fetch("http://localhost:5000/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content, outputTypes: selectedOutputs }),
+        body: JSON.stringify({ content, outputs: selectedOutputs }), // now an array
       });
+
+      
+      
       const data = await response.json();
+      console.log("fetch completed, data.result")
       setResult(data.result);
     } catch (error) {
       console.error("Error generating content:", error);
