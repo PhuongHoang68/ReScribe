@@ -1,0 +1,34 @@
+.checkbox-group {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin-bottom: 1rem;
+  }
+  
+  .checkbox-item {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+  }
+  
+  .checkbox-trigger {
+	display: flex;
+	align-items: center;
+  }
+  
+  .checkbox {
+	width: 20px;
+	height: 20px;
+	border: 1px solid #555;
+	border-radius: 4px;
+	margin-right: 0.5rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  .checkbox[aria-checked="true"] {
+	background-color: #007bff;
+	color: white;
+  }
+  

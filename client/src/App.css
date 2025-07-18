@@ -30,8 +30,8 @@
 
 .Content {
   background-color: #EDF2FE;
-  min-height: 92vh;
-  width: 94%;
+  min-height: 85vh;
+  width: 93%;
   border-radius: 21px;
 
     /* NEW: Flex layout to support footer at bottom */

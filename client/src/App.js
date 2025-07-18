@@ -8,6 +8,9 @@ import LandingPage from './LandingPage';
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignUpPage";
 import Dashboard from "./Dashboard";
+// import GenerateOutput from "./components/GenerateOutput";
+// import UserSettings from "./components/UserSettings";
+// import ViewHistory from "./components/ViewHistory";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -37,6 +40,9 @@ function App() {
           path="/dashboard"
           element={user ? <Dashboard user={user} /> : <Navigate to="/" />}
         />
+          {/* <Route path="generate" element={<GenerateOutput />} />
+          <Route path="history"  element={<ViewHistory />} />
+          <Route path="settings" element={<UserSettings />} /> */}
         {/* Optionally add a catch-all: */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

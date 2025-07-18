@@ -15,6 +15,7 @@ import { Theme } from "@radix-ui/themes";
 
 
 export default function Login() {
+	console.log("login page")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
