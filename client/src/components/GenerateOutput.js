@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { CheckboxGroup } from "@radix-ui/themes";
 import { TextArea } from "@radix-ui/themes";
 import "./styles.css";
+import { Box, Progress } from "@radix-ui/themes";
+
 
 const outputOptions = [
   { label: "Twitter Thread", value: "twitter" },
@@ -13,12 +15,30 @@ const outputOptions = [
 export default function GenerateOutput() {
   const [content, setContent] = useState("");
   const [selectedOutputs, setSelectedOutputs] = useState([]);
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState({});
+  //progress bar raidx
+  const [progress, setProgress] = useState(0);
+  const [isGenerating, setIsGenerating] = useState(false);
+  //
+
+
 
   const handleGenerate = async () => {
     if (selectedOutputs.length === 0 || content.trim() === "") return;
     console.log("CONTENT", content);
     console.log("SELECTEDOUTPUTS", selectedOutputs);
+
+    //progress bar
+    setIsGenerating(true);
+    setProgress(25);
+
+    const interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev < 90) return prev + 1.5;
+          return prev;
+        });
+      }, 500);
+      //
 
     try {
       const response = await fetch("http://localhost:5000/api/generate", {
@@ -26,15 +46,30 @@ export default function GenerateOutput() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content, outputs: selectedOutputs }), // now an array
       });
-
-      
-      
       const data = await response.json();
       console.log("fetch completed, data.result")
-      setResult(data.result);
+      const sections = data.result.split("### ");
+const formatted = sections.reduce((acc, section) => {
+  const [title, ...body] = section.split("\n");
+  if (title && body.length) {
+    acc[title.trim()] = body.join("\n").trim();
+  }
+  return acc;
+}, {});
+setResult(formatted);
+
     } catch (error) {
       console.error("Error generating content:", error);
-    }
+    } finally {
+        //progress bar
+        clearInterval(interval);
+        setProgress(100);
+        setTimeout(() => {
+          setIsGenerating(false);
+          setProgress(0); // reset for next use
+        }, 1050); // hold at 100% briefly before reset
+        //
+      }
   };
 
   return (
@@ -82,13 +117,27 @@ export default function GenerateOutput() {
         Generate
       </button>
 
+      {/* progress bar */}
+      {isGenerating && (
+  <Box maxWidth="300px" style={{ marginTop: "1rem" }}>
+    <Progress value={progress} />
+  </Box>
+)}
+
+
       {/* Result */}
-      {result && (
-        <div className="mt-6 p-4 bg-white rounded shadow">
-          <h3 className="font-semibold mb-2">Generated Output:</h3>
-          <p>{result}</p>
-        </div>
-      )}
+      {Object.keys(result).length > 0 && (
+  <div className="mt-6 p-4 bg-white rounded shadow space-y-4">
+    <h3 className="font-semibold text-lg">Generated Outputs:</h3>
+    {Object.entries(result).map(([platform, text]) => (
+      <div key={platform}>
+        <h4 className="font-bold text-blue-700 mb-1">{platform}</h4>
+        <pre className="whitespace-pre-wrap bg-gray-100 p-3 rounded text-sm">{text}</pre>
+      </div>
+    ))}
+  </div>
+)}
+
     </div>
   );
 }
