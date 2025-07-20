@@ -14,6 +14,7 @@ const outputOptions = [
 
 export default function GenerateOutput() {
   const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
   const [selectedOutputs, setSelectedOutputs] = useState([]);
   const [result, setResult] = useState({});
   //progress bar raidx
@@ -24,9 +25,11 @@ export default function GenerateOutput() {
 
 
   const handleGenerate = async () => {
-    if (selectedOutputs.length === 0 || content.trim() === "") return;
+    //trim title necessary?
+    if (selectedOutputs.length === 0 || content.trim() === "" || title.length === 0) return;
     console.log("CONTENT", content);
     console.log("SELECTEDOUTPUTS", selectedOutputs);
+    console.log("title", title)
 
     //progress bar
     setIsGenerating(true);
@@ -44,7 +47,7 @@ export default function GenerateOutput() {
       const response = await fetch("http://localhost:5000/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content, outputs: selectedOutputs }), // now an array
+        body: JSON.stringify({ content, outputs: selectedOutputs, title }), // now an array
       });
       const data = await response.json();
       console.log("fetch completed, data.result")
@@ -75,7 +78,16 @@ setResult(formatted);
   return (
     <div style={{ padding: "2rem" }}>
       <h2 className="text-xl font-bold mb-4">Generate Output</h2>
-
+      <TextArea
+        placeholder="Your content title, to be saved to history"
+        value={title}
+        onChange={(e) => setTitle(e.currentTarget.value)}
+        size="2"
+        variant="surface"
+        radius="medium"
+        resize="vertical"
+        style={{ width: "100%", minHeight: 150, margin: "1rem 0" }}
+      />
       {/* Checkbox Group for selecting output types */}
       <CheckboxGroup.Root
       variant="classic"

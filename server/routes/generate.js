@@ -13,13 +13,14 @@ const MAX_INPUT_TOKENS = 5000 * 1.5;
 const countTokens = (text) => Math.ceil(text.length / 4);
 
 router.post("/", async (req, res) => {
-  const { content, outputs } = req.body;
-  if (!content || !outputs?.length)
-    return res.status(400).json({ error: "Content & outputs required." });
+  const { content, outputs, title } = req.body;
+  console.log("name", title);
+  if (!content || !outputs?.length || !title)
+    return res.status(400).json({ error: "Content & outputs & title required." });
 
   try {
+    console.log("title", title);
     const originalTokens = countTokens(content);
-
     let summary = content;
     if (originalTokens > MAX_INPUT_TOKENS) {
         console.log("MAX TOKEN SURPASSED", originalTokens)
@@ -69,14 +70,15 @@ router.post("/", async (req, res) => {
     });
 
     const generated = genRes.choices[0].message.content;
-    const doc = await Output.create({
-      content,
+    const saved = await Output.create({
+      title, 
       outputs,
       result: generated,
       tokenUsage: genRes.usage,
     });
+    console.log("saved", saved);
 
-    res.json({ result: generated, tokenUsage: genRes.usage });
+    res.json({ title, result: generated, outputs,  tokenUsage: genRes.usage, id: saved._id }); //what data is sent back
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Generation failed." });

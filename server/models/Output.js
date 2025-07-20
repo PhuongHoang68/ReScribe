@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 const OutputSchema = new mongoose.Schema({
-  content: String,
+  title: String,
+  content: String, //what user input
   outputs: [String], // e.g., ["twitter", "linkedin"]
   result: String,
   createdAt: {
