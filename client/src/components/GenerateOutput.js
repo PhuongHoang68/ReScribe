@@ -118,7 +118,8 @@ setResult(formatted);
         style={{ width: "100%", minHeight: 150, margin: "1rem 0" }}
       />
       <div style={{ textAlign: "right", marginBottom: "1rem" }}>
-        {content.length} / 5000
+        {/* {content.length} / 5000 */}
+        Word count: {content.length} 
       </div>
 
       {/* Button */}
