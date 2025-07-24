@@ -50,7 +50,7 @@ export default function GenerateOutput() {
         body: JSON.stringify({ content, outputs: selectedOutputs, title }), // now an array
       });
       const data = await response.json();
-      console.log("fetch completed, data.result")
+      // console.log("fetch completed, data.result")
       const sections = data.result.split("### ");
 const formatted = sections.reduce((acc, section) => {
   const [title, ...body] = section.split("\n");

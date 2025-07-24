@@ -29,8 +29,10 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 const generateRoute = require("./routes/generate");
+const historyRoutes = require("./routes/history")
 
 app.use("/api/generate", generateRoute);
+app.use("/api/history", historyRoutes);
 
 const startServer = async () => {
   try {

@@ -1,7 +1,7 @@
 import "@radix-ui/themes/styles.css";
 import './App.css';
 import React, { useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { auth } from "./firebase";
 import LandingPage from './LandingPage';
@@ -23,6 +23,21 @@ function App() {
     });
     return unsub;
   }, []);
+
+  useEffect(() => {
+    let logoutTimer;
+    if (user) {
+      logoutTimer = setTimeout(() => {
+        auth.signOut();
+        console.log("Signed out after 6 hours");
+      }, 6 * 60 * 60 * 1000)
+    }
+
+    return () => {
+      if (logoutTimer) clearTimeout(logoutTimer);
+    }
+  }, [user])
+
 
   return (
     <BrowserRouter>

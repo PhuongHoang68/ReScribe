@@ -42,3 +42,18 @@
     box-sizing: border-box;
 }
 
+.History {
+
+    background-color: #EDF2FE;
+    min-height: 85vh;
+    width: 93%;
+    border-radius: 21px;
+  
+      /* NEW: Flex layout to support footer at bottom */
+      display: flex;
+      flex-direction: column;
+
+      /* padding: 2rem; */
+      box-sizing: border-box;
+  
+}
