@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CheckboxGroup } from "@radix-ui/themes";
 import "./styles.css";
-import { Box, Progress, Flex, Separator, Text, TextArea, Button, ScrollArea } from "@radix-ui/themes";
+import { Box, Progress, Heading, Flex, Separator, Text, TextArea, Button, ScrollArea } from "@radix-ui/themes";
 
 
 
@@ -9,7 +9,7 @@ const outputOptions = [
   { label: "Twitter Thread", value: "twitter" },
   { label: "Instagram Caption", value: "instagram" },
   { label: "LinkedIn Post", value: "linkedin" },
-  { label: "TikTok Script", value: "tiktok" },
+  // { label: "TikTok Script", value: "tiktok" },
 ];
 
 export default function GenerateOutput() {
@@ -26,6 +26,7 @@ export default function GenerateOutput() {
 
   const handleGenerate = async () => {
     //trim title necessary?
+    console.log("handle function hit")
     if (selectedOutputs.length === 0 || content.trim() === "" || title.length === 0) return;
     console.log("CONTENT", content);
     console.log("SELECTEDOUTPUTS", selectedOutputs);
@@ -75,208 +76,167 @@ setResult(formatted);
       }
   };
 
+  useEffect(() => {
+    console.log("content", content);
+    console.log("title", title)
+  }, [content, title])
+
   return (
-//     <div style={{ padding: "2rem" }}>
-//       {/* Generate section */}
-//       <h2 className="text-xl font-bold mb-4">Generate Output</h2>
-
-
-//       {/* Title section */}
-//       <TextArea
-//         placeholder="Your content title, to be saved to history"
-//         value={title}
-//         onChange={(e) => setTitle(e.currentTarget.value)}
-//         size="2"
-//         variant="surface"
-//         radius="medium"
-//         resize="vertical"
-//         style={{ width: "100%", minHeight: 150, margin: "1rem 0" }}
-//       />
-
-
-//       {/* Checkbox section */}
-//       <CheckboxGroup.Root
-//       variant="classic"
-//         value={selectedOutputs}
-//         onValueChange={setSelectedOutputs}
-//       >
-//         {outputOptions.map((opt) => (
-//           <label key={opt.value} className="checkbox-item">
-//             <CheckboxGroup.Item value={opt.value} className="checkbox-trigger">
-//               {/* <Checkbox className="checkbox">
-//                 <CheckIcon />
-//               </Checkbox> */}
-//               {opt.label}
-//             </CheckboxGroup.Item>
-//           </label>
-//         ))}
-//       </CheckboxGroup.Root>
-
-
-//       {/* Text section */}
-//       <TextArea
-//         placeholder="Paste your content here..."
-//         value={content}
-//         onChange={(e) => setContent(e.currentTarget.value)}
-//         size="2"
-//         variant="surface"
-//         radius="medium"
-//         resize="vertical"
-//         style={{ width: "100%", minHeight: 150, margin: "1rem 0" }}
-//       />
-//       <div style={{ textAlign: "right", marginBottom: "1rem" }}>
-//         {/* {content.length} / 5000 */}
-//         Word count: {content.length} 
-//       </div>
-
-//       {/* Button */}
-//       <button
-//         onClick={handleGenerate}
-//         className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-//       >
-//         Generate
-//       </button>
-
-//       {/* progress bar */}
-//       {isGenerating && (
-//   <Box maxWidth="300px" style={{ marginTop: "1rem" }}>
-//     <Progress value={progress} />
-//   </Box>
-// )}
-
-
-//       {/* Result section */}
-//       {Object.keys(result).length > 0 && (
-//   <div className="mt-6 p-4 bg-white rounded shadow space-y-4">
-//     <h3 className="font-semibold text-lg">Generated Outputs:</h3>
-//     {Object.entries(result).map(([platform, text]) => (
-//       <div key={platform}>
-//         <h4 className="font-bold text-blue-700 mb-1">{platform}</h4>
-//         <pre className="whitespace-pre-wrap bg-gray-100 p-3 rounded text-sm">{text}</pre>
-//       </div>
-//     ))}
-//   </div>
-// )}
-
-//     </div>
 <Flex direction={{ initial: "column", lg: "row" }} gap="6" p="6">
   {/* Left side – Form */}
-  <Box
-    width={{ lg: "50%" }}
-    style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+{/* Left Side – Entire form in one box */}
+<Box
+  width={{ lg: "50%" }}
+  p="4"
+  style={{
+    border: "1px solid #e5e7eb",
+    borderRadius: 8,
+    background: "white",
+    display: "flex",
+    flexDirection: "column",
+    gap: "1.5rem",
+  }}
+>
+  {/* Generate Header */}
+  {/* <Box as="section" mb="4" pb="4" > */}
+  {/* <Heading
+    size="4"
+    style={{
+      margin: 0,
+      padding: 0,
+      lineHeight: '1',
+    }}
   >
-    {/* Generate section */}
-    <Box
-      p="4"
-      style={{ border: "1px solid #e5e7eb", borderRadius: 8, background: "white" }}
-    >
-      <Text size="5" weight="bold">
-        Generate Output
-      </Text>
-    </Box>
+    Generate Output
+  </Heading> */}
+  {/* <Text
+    size="2"
+    color="gray"
+    style={{
+      marginTop: '0',
+      marginBottom: '12px',
+      lineHeight: '1.3',
+    }}
+  >
+    Title your content. Paste it. Generate new content.
+  </Text>
+</Box> */}
 
-    {/* Title section */}
-    <Box
-      p="4"
-      style={{ border: "1px solid #e5e7eb", borderRadius: 8, background: "white" }}
-    >
-      <TextArea
-        placeholder="Your content title, to be saved to history"
-        value={title}
-        onChange={(e) => setTitle(e.currentTarget.value)}
-        size="1"
-        variant="surface"
-        radius="medium"
-        resize="none"
-        style={{ minHeight: 40 }}
-      />
-    </Box>
 
-    {/* Content section */}
-    <Box
-      p="4"
-      style={{ border: "1px solid #e5e7eb", borderRadius: 8, background: "white" }}
-    >
-      <TextArea
-        placeholder="Paste your content here..."
-        value={content}
-        onChange={(e) => setContent(e.currentTarget.value)}
-        size="2"
-        variant="surface"
-        radius="medium"
-        resize="vertical"
-        style={{ minHeight: 150 }}
-      />
-      <Text size="1" align="right" color="gray" mt="2">
-        Word count: {content.length}
-      </Text>
-    </Box>
+  {/* <Separator size="4" color="gray" /> */}
 
-    {/* Checkbox section */}
-    <Box
-      p="4"
-      style={{ border: "1px solid #e5e7eb", borderRadius: 8, background: "white" }}
-    >
-      <CheckboxGroup.Root value={selectedOutputs} onValueChange={setSelectedOutputs}>
-        {outputOptions.map((opt) => (
-          <label key={opt.value} style={{ display: "block", marginBottom: "0.5rem" }}>
-            <CheckboxGroup.Item value={opt.value}>{opt.label}</CheckboxGroup.Item>
-          </label>
-        ))}
-      </CheckboxGroup.Root>
-    </Box>
-
-    {/* Button + Progress */}
-    <Box
-      p="4"
-      style={{ border: "1px solid #e5e7eb", borderRadius: 8, background: "white" }}
-    >
-      <Button
-        size="3"
-        color="blue"
-        disabled={isGenerating}
-        onClick={handleGenerate}
-        highContrast
-        style={{ width: "100%" }}
-      >
-        {isGenerating ? (
-          <Flex align="center" gap="2">
-            <svg
-              className="animate-spin"
-              width="16"
-              height="16"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v8H4z"
-              />
-            </svg>
-            Generating...
-          </Flex>
-        ) : (
-          "Generate"
-        )}
-      </Button>
-
-      {isGenerating && (
-  <Box mt="4">
-    <Progress value={progress} />
+  {/* Title Input */}
+  <Box>
+  <Heading size="4" weight="550" mb="2">
+      Title
+    </Heading>
+    <Text size="2" color="gray" mb="2">
+      Title your content
+    </Text>
+    <TextArea
+      placeholder="What is your content called?"
+      // value={title}
+      onChange={(e) => setTitle(e.currentTarget.value)}
+      size="1"
+      variant="surface"
+      radius="medium"
+      resize="none"
+      style={{ minHeight: 40 }}
+    />
   </Box>
-)}
 
-    </Box>
+  <Separator size="4" color="gray" />
+
+  {/* Content Input */}
+  <Box>
+  <Heading size="4" weight="550" mb="2">
+      Long-form content
+    </Heading>
+    <Text size="2" color="gray" mb="2">
+      Paste your long-form content
+    </Text>
+
+    <TextArea
+      placeholder="Paste your content here..."
+      // value={content}
+      onChange={(e) => setContent(e.currentTarget.value)}
+      size="2"
+      variant="surface"
+      radius="medium"
+      resize="vertical"
+      style={{ minHeight: 400 }}
+    />
+    <Text size="1" align="right" color="gray" mt="2">
+      Word count: {content.length}
+    </Text>
   </Box>
+
+  <Separator size="4" color="gray" />
+
+  {/* Checkbox Group */}
+  <Box>
+  <Heading size="4" weight="550" mb="2">
+      Short-form content type
+    </Heading>
+    <CheckboxGroup.Root value={selectedOutputs} onValueChange={setSelectedOutputs}>
+      {outputOptions.map((opt) => (
+        <label key={opt.value} style={{ display: "block", marginBottom: "0.5rem" }}>
+          <CheckboxGroup.Item value={opt.value}>{opt.label}</CheckboxGroup.Item>
+        </label>
+      ))}
+    </CheckboxGroup.Root>
+  </Box>
+
+  <Separator size="4" color="gray" />
+
+  {/* Button + Progress */}
+  <Box>
+    <Button
+      size="3"
+      color="blue"
+      disabled={isGenerating}
+      onClick={handleGenerate}
+      highContrast
+      style={{ width: "100%" }}
+    >
+      {isGenerating ? (
+        <Flex align="center" gap="2">
+          <svg
+            className="animate-spin"
+            width="16"
+            height="16"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            />
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v8H4z"
+            />
+          </svg>
+          Generating...
+        </Flex>
+      ) : (
+        "Generate"
+      )}
+    </Button>
+
+    {isGenerating && (
+      <Box mt="4">
+        <Progress value={progress} />
+      </Box>
+    )}
+  </Box>
+</Box>
+
 
   {/* Right side – Result */}
   {Object.keys(result).length > 0 && (
