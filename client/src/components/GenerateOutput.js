@@ -82,11 +82,9 @@ setResult(formatted);
   }, [content, title])
 
   return (
-<Flex direction={{ initial: "column", lg: "row" }} gap="6" p="6">
-  {/* Left side – Form */}
-{/* Left Side – Entire form in one box */}
+<Flex justify="center" direction={{ initial: "column", lg: "row",  }} gap="6" pr="6" pl="6" pb="6" >
 <Box
-  width={{ lg: "50%" }}
+  width={{ lg: "95%" }}
   p="4"
   style={{
     border: "1px solid #e5e7eb",
@@ -95,45 +93,19 @@ setResult(formatted);
     display: "flex",
     flexDirection: "column",
     gap: "1.5rem",
+    padding: "3rem 1rem",
   }}
 >
-  {/* Generate Header */}
-  {/* <Box as="section" mb="4" pb="4" > */}
-  {/* <Heading
-    size="4"
-    style={{
-      margin: 0,
-      padding: 0,
-      lineHeight: '1',
-    }}
-  >
-    Generate Output
-  </Heading> */}
-  {/* <Text
-    size="2"
-    color="gray"
-    style={{
-      marginTop: '0',
-      marginBottom: '12px',
-      lineHeight: '1.3',
-    }}
-  >
-    Title your content. Paste it. Generate new content.
-  </Text>
-</Box> */}
-
-
-  {/* <Separator size="4" color="gray" /> */}
-
-  {/* Title Input */}
-  <Box>
+ {/* Title Input */}
+  <Box style={{boxShadow: "0 12px 32px rgba(0, 0, 0, 0.2)"}}>
   <Heading size="4" weight="550" mb="2">
       Title
     </Heading>
-    <Text size="2" color="gray" mb="2">
-      Title your content
+    <Text size="2" color="gray">
+      Input Your Content Title
     </Text>
     <TextArea
+    mt="2"
       placeholder="What is your content called?"
       // value={title}
       onChange={(e) => setTitle(e.currentTarget.value)}
@@ -152,11 +124,11 @@ setResult(formatted);
   <Heading size="4" weight="550" mb="2">
       Long-form content
     </Heading>
-    <Text size="2" color="gray" mb="2">
+    <Text size="2" color="gray">
       Paste your long-form content
     </Text>
 
-    <TextArea
+    <TextArea mt="2"
       placeholder="Paste your content here..."
       // value={content}
       onChange={(e) => setContent(e.currentTarget.value)}
@@ -178,7 +150,10 @@ setResult(formatted);
   <Heading size="4" weight="550" mb="2">
       Short-form content type
     </Heading>
-    <CheckboxGroup.Root value={selectedOutputs} onValueChange={setSelectedOutputs}>
+    <Text size="2" color="gray">
+      Select your output type
+    </Text>
+    <CheckboxGroup.Root mt="2" value={selectedOutputs} onValueChange={setSelectedOutputs}>
       {outputOptions.map((opt) => (
         <label key={opt.value} style={{ display: "block", marginBottom: "0.5rem" }}>
           <CheckboxGroup.Item value={opt.value}>{opt.label}</CheckboxGroup.Item>
