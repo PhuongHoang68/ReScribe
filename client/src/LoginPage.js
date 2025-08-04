@@ -47,8 +47,8 @@ export default function Login() {
     //   <button type="submit">Log In</button>
     // </form>
     <Theme className="Auth">
-    <Flex flexShrink="0" gap="6" direction="column" width="416px">
-				<Card size="4">
+    <Flex flexShrink="0" gap="6" direction="column" width="416px" >
+				<Card size="5" style={{backgroundColor: "white"}}>
 					<Heading as="h3" size="6" trim="start" mb="5">
 						Log In
 					</Heading>

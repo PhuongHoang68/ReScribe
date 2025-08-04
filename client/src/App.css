@@ -18,28 +18,28 @@
   /* color: white;  */
 }
 .Auth {
-  background-color: #D0DFFF;
+  background-color: #EDF2FE;
   min-height: 100vh;
   display: flex;
   /* flex-direction: column;  */
   /* align-items: center; */
-  padding-top: 5rem;
+  padding-top: 2.5rem;
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
 
 .Content {
   background-color: #EDF2FE;
-  min-height: 85vh;
+  min-height: 90vh;
   width: 93%;
-  border-radius: 21px;
+  border-radius: 6px;
 
-    /* NEW: Flex layout to support footer at bottom */
-    display: flex;
+    /*NEW: Flex layout to support footer at bottom */
+    /* display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    /* padding: 2rem; */
-    box-sizing: border-box;
+    justify-content: space-between; 
+    padding: 2rem;  */
+    /* box-sizing: border-box;
 }
 
 .History {

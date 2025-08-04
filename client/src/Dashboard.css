@@ -34,6 +34,5 @@
     flex: 1;
     padding: 1rem;
     overflow-y: auto;
-    background-color: transparent; /* sits on light gray .Content background */
+    background-color: transparent; 
   }
-  
