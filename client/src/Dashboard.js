@@ -1,42 +1,36 @@
 import React from "react";
 import { logout } from "./firebase";
-import {
-  TwitterLogoIcon,
-  LinkedInLogoIcon,
-  InstagramLogoIcon,
-  CopyIcon,
-  CheckCircledIcon,
-  ArrowRightIcon
-} from "@radix-ui/react-icons";
 import * as Tabs from "@radix-ui/react-tabs";
-import { Box } from "@radix-ui/themes";
 import GenerateOutput from "./components/GenerateOutput";
 import ViewHistory from "./components/ViewHistory";
+import { useState } from "react";
+
 
 export default function Dashboard({ user }) {
+	const [activeTab, setActiveTab] = useState("generate");
   return (
     <div
-      className="App"
       style={{
         display: "flex",
         flexDirection: "column",
         fontFamily: "sans-serif",
-        backgroundColor: "#f9fafb",
-        minHeight: "100vh"
+        minHeight: "100vh",
+        overflowX: "hidden" // avoid accidental horizontal scrollbars
       }}
     >
       {/* Header */}
       <header
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "1rem 2rem",
-          background: "#fff",
-          borderBottom: "1px solid #e5e7eb"
-        }}
-      >
+      style={{
+        display: "flex",
+		justifyContent: "space-between",
+		alignItems: "center",
+		padding: "1rem 2rem",
+      }}
+    >
         <div style={{ fontSize: "1.75rem", fontWeight: "bold" }}>Rescribe</div>
+		<div style={{display: "flex", alignItems: "center", gap: "4rem"}}>
+	  <div>Generate Output</div>
+	  <div>View History</div>
         <button
           onClick={logout}
           style={{
@@ -46,67 +40,81 @@ export default function Dashboard({ user }) {
             borderRadius: "0.5rem",
             padding: "0.5rem 1rem",
             cursor: "pointer",
-            fontSize: "1rem"
+            fontSize: "1rem",
           }}
         >
           Log Out
         </button>
-      </header>
+		</div>
+
+    
+    </header>
 
       {/* Main Content */}
       <main
         style={{
           flex: 1,
-          padding: "2rem 2rem 3rem",
-          maxWidth: "1600px",
-          margin: "0 auto",
-          width: "100%"
+          padding: "3rem 1.5rem",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
-        <Tabs.Root defaultValue="generate" style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+        <Tabs.Root
+          defaultValue="generate"
+          style={{
+            width: "100%",
+            maxWidth: "1200px", // safe readable width
+            backgroundColor: "#fff",
+            // borderRadius: "1rem",
+            // border: "1px solid #e5e7eb",
+            // boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
+            overflow: "hidden"
+          }}
+        >
           {/* Tabs List */}
-          <Tabs.List style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
-            <Tabs.Trigger
-              value="generate"
-              style={{
-                padding: "0.6rem 1.4rem",
-                backgroundColor: "#10b981",
-                color: "#fff",
-                border: "none",
-                borderRadius: "0.5rem",
-                fontSize: "1rem",
-                fontWeight: "500",
-                cursor: "pointer"
-              }}
-            >
-              Generate Output
-            </Tabs.Trigger>
-            <Tabs.Trigger
-              value="history"
-              style={{
-                padding: "0.6rem 1.4rem",
-                backgroundColor: "#3b82f6",
-                color: "#fff",
-                border: "none",
-                borderRadius: "0.5rem",
-                fontSize: "1rem",
-                fontWeight: "500",
-                cursor: "pointer"
-              }}
-            >
-              View History
-            </Tabs.Trigger>
-          </Tabs.List>
+          {/* <Tabs.List
+            style={{
+              display: "flex",
+			  backgroundColor: "#EDF2FE",
+              borderBottom: "1px solid #e5e7eb"
+            }}
+          >
+            {[
+              { label: "Generate Output", value: "generate" },
+              { label: "View History", value: "history" }
+            ].map(({ label, value }) => (
+              <Tabs.Trigger
+                key={value}
+                value={value}
+                style={{
+                  flex: 1,
+                  padding: "1rem 1.5rem",
+                  fontSize: "1rem",
+                  fontWeight: 500,
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "#374151",
+                  textAlign: "center",
+                  borderBottom: "3px solid transparent",
+                  transition: "all 0.2s ease"
+                }}
+                onFocus={(e) => (e.target.style.outline = "none")}
+              >
+                {label}
+              </Tabs.Trigger>
+            ))}
+          </Tabs.List> */}
 
-          {/* Tab Content — Full Width */}
-          <Box pt="2" style={{ width: "100%" }}>
-            <Tabs.Content value="generate" style={{ width: "100%" }}>
+          {/* Tab Content */}
+          <div style={{ padding: "2rem" }}>
+            <Tabs.Content value="generate">
               <GenerateOutput />
             </Tabs.Content>
-            <Tabs.Content value="history" style={{ width: "100%" }}>
+            <Tabs.Content value="history">
               <ViewHistory />
             </Tabs.Content>
-          </Box>
+          </div>
         </Tabs.Root>
       </main>
 
@@ -116,7 +124,7 @@ export default function Dashboard({ user }) {
           textAlign: "center",
           padding: "1rem 0",
           fontSize: "0.875rem",
-          color: "#6b7280"
+          color: "#6b7280",
         }}
       >
         Built with React, Firebase, OpenAI API, MongoDB, Vercel
