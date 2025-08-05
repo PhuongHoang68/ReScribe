@@ -18,7 +18,7 @@
   /* color: white;  */
 }
 .Auth {
-  background-color: #edeffe75;
+  background-color: #d0e5ff5d;
   min-height: 100vh;
   display: flex;
   /* flex-direction: column;  */
@@ -26,6 +26,16 @@
   padding-top: 2.5rem;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+}
+
+.auth-button {
+  background-color: #0F172A;
+  border-radius: 12px;
+  padding: 19px 22px;
+  font-size: 14px;
+  box-shadow: 0 8px 22px rgba(59, 77, 219, 0.25);
+  /* box-shadow: 0 4px 6px rgba(15, 23, 42, 0.2); */
+  transition: all 0.25s ease;
 }
 
 .Content {

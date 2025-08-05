@@ -48,7 +48,7 @@ export default function Login() {
     // </form>
     <Theme className="Auth">
     <Flex flexShrink="0" gap="6" direction="column" width="416px" >
-				<Card size="5" style={{backgroundColor: "white"}}>
+	<Card size="5" style={{backgroundColor: "white", boxShadow: '0 10px 22px rgba(59, 77, 219, 0.17)'}}>
 					<Heading as="h3" size="6" trim="start" mb="5">
 						Log In
 					</Heading>
@@ -107,7 +107,7 @@ export default function Login() {
 							Create an account
 						</Button> */}
 						{/* <Button tabIndex={tabIndex} onClick={{handleLogin}}>Sign in</Button> */}
-            <Button onClick={handleLogin}>Log In</Button>
+            <Button  className="auth-button" onClick={handleLogin}>Log In</Button>
 					</Flex>
 				</Card>
         </Flex>
