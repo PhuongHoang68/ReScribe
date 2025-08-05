@@ -94,10 +94,11 @@ setResult(formatted);
     flexDirection: "column",
     gap: "1.5rem",
     padding: "3rem 1rem",
+    boxShadow: "0 12px 32px rgba(0, 0, 0, 0.15)"
   }}
 >
  {/* Title Input */}
-  <Box style={{boxShadow: "0 12px 32px rgba(0, 0, 0, 0.2)"}}>
+  <Box>
   <Heading size="4" weight="550" mb="2">
       Title
     </Heading>

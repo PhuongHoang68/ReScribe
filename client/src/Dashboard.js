@@ -83,7 +83,7 @@ export default function Dashboard({ user }) {
             // maxWidth: "1200px",
             backgroundColor: "#fff",
             borderRadius: "1rem",
-            boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
+            // boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
             // padding: "0 2rem 0 2rem",
           }}
         >
