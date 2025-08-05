@@ -16,19 +16,24 @@ export default function LandingPage() {
               <button style={{ background: 'none', border: 'none', fontSize: '1rem', cursor: 'pointer', color: '#374151' }}>Log In</button>
             </Link>
             <Link to="/signup" style={{ textDecoration: 'none' }}>
-              <button style={{ backgroundColor: '#2563eb', border: 'none', borderRadius: '0.5rem', padding: '0.5rem 1rem', fontSize: '1rem', cursor: 'pointer', color: '#fff' }}>Sign Up</button>
+              <button className="signup-button" >
+              {/* style={{ backgroundColor: '#2563eb', border: 'none', borderRadius: '0.5rem', padding: '0.5rem 1rem', fontSize: '1rem', cursor: 'pointer', color: '#fff' }}> */}
+                Sign Up
+                </button>
             </Link>
           </div>
         </header>
 
         <main style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem', padding: '3rem 2rem' }}>
           {/* Left Side */}
-          <div style={{ flex: 1, minWidth: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '1.5rem' }}>
-            <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', lineHeight: '1.2' }}>ReScribe: Do More with Less</h1>
+          <div style={{ flex: 1,  minWidth: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '1.5rem' }}>
+            <h1 className="app-name">ReScribe: Do More with Less</h1>
             <p style={{ fontSize: '1.125rem', color: '#4b5563', maxWidth: '40ch' }}>
               AI Content Repurposer - Turn your long-form content into short, platform-ready posts in seconds.
             </p>
-            <button style={{ backgroundColor: '#10b981', color: '#fff', padding: '0.75rem 1.5rem', borderRadius: '0.5rem', fontSize: '1rem', border: 'none', cursor: 'pointer' }}>Get Started</button>
+            <button className= "getting-started">
+              Get Started
+              </button>
           </div>
 
           {/* Right Side */}
@@ -39,6 +44,8 @@ export default function LandingPage() {
     padding: '1.5rem 1.5rem 2.2rem 1.5rem',
     borderRadius: '1rem',
     border: '1px solid #e5e7eb',
+    borderColor: '#2C2C2C',
+    boxShadow: '0 0 1px rgba(59, 77, 219, 0.7)',
     background: '#fff'
   }}
 >
@@ -105,6 +112,9 @@ export default function LandingPage() {
     border: '1px solid #e5e7eb',
     background: '#fff',
     textAlign: 'center',
+    boxShadow: '0 0 1px rgba(59, 77, 219, 0.7)',
+    // boxShadow: '0 0 4px rgba(59, 77, 219, 0.15)',
+    borderColor: '#2C2C2C',
   }}
 >
   <h2

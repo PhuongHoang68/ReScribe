@@ -18,7 +18,7 @@
   /* color: white;  */
 }
 .Auth {
-  background-color: #EDF2FE;
+  background-color: #edeffe75;
   min-height: 100vh;
   display: flex;
   /* flex-direction: column;  */
@@ -29,10 +29,14 @@
 }
 
 .Content {
-  background-color: #1a202c;
+  /* background-color: #d0e8ff5d; */
+  background-color: #d0e5ff5d;
+  /* background-color: #d3d0ff52; */
+  /* background-color: #d0dfffb2; */
   min-height: 90vh;
   width: 93%;
   border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(59, 77, 219, 0.12);
 
     /*NEW: Flex layout to support footer at bottom */
     /* display: flex;
@@ -56,4 +60,39 @@
       /* padding: 2rem; */
       box-sizing: border-box;
   
+}
+
+.getting-started {
+  background-color: #0F172A;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 8px 22px rgba(59, 77, 219, 0.25);
+  /* box-shadow: 0 4px 6px rgba(15, 23, 42, 0.2); */
+  transition: all 0.25s ease;
+  
+}
+
+.signup-button {
+  background-color: #F9FAFB;
+  color: #1C2335;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.25s ease;
+  box-shadow: 0 10px 22px rgba(59, 77, 219, 0.28);
+}
+.app-name {
+font-size: 3.5rem;
+font-weight: 700;
+background: linear-gradient(to right, #000000, #0f172a7f);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+margin-bottom: 1rem;
+letter-spacing: -0.5px;
 }

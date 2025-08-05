@@ -97,7 +97,7 @@ export default function Dashboard({ user }) {
           textAlign: "center",
           padding: "1rem 0",
           fontSize: "0.875rem",
-        //   color: "#6b7280",
+          color: '#6b7280'
         }}
       >
         Built with React, Firebase, OpenAI API, MongoDB, Vercel
