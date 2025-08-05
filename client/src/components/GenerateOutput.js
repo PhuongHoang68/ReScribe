@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CheckboxGroup } from "@radix-ui/themes";
 import "./styles.css";
-import { Box, Progress, Heading, Flex, Separator, Text, TextArea, Button, ScrollArea } from "@radix-ui/themes";
+import { Box, Progress, Heading, Flex, Separator, Text, TextArea, Button } from "@radix-ui/themes";
 
 
 
