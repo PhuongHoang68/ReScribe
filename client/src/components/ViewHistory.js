@@ -136,7 +136,12 @@ export default function ViewHistory() {
                               WebkitBoxOrient: "vertical",
                               textOverflow: "ellipsis",
                               lineHeight: "1.4",
-                              color: "#666",
+                              backgroundColor: "#F9FAFB", // light neutral background for contrast
+                              border: "1px solid #E5E7EB", // subtle border
+                              borderRadius: "8", // smooth corners
+                              padding: "20px",
+                              marginBottom: "20px",
+                              boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)", // soft lift
                             }}
                           >
                             {item.result}
@@ -173,10 +178,23 @@ export default function ViewHistory() {
                         <pre
                           style={{
                             whiteSpace: "pre-wrap",
-                            margin: 0,
-                            fontSize: "0.875rem",
+                            // margin: 0,
+                            // fontSize: "0.875rem",
+                            // lineHeight: "1.4",
+                            // color: "#666",
+                            fontFamily: "inherit",
+                            // overflow: "hidden",
+                            // display: "-webkit-box",
+                            // WebkitLineClamp: 2,
+                            // WebkitBoxOrient: "vertical",
+                            // textOverflow: "ellipsis",
                             lineHeight: "1.4",
-                            color: "#666",
+                            backgroundColor: "#F9FAFB", // light neutral background for contrast
+                            border: "1px solid #E5E7EB", // subtle border
+                            borderRadius: "8", // smooth corners
+                            padding: "20px",
+                            marginBottom: "20px",
+                            boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)", // soft lift
                           }}
                         >
                           {item.result}
