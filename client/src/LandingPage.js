@@ -10,7 +10,12 @@ export default function LandingPage() {
       <div className="Content" style={{ maxWidth: '1600px', margin: '0 auto' }}>
         {/* Header */}
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 2rem' }}>
-          <div style={{ fontSize: '1.75rem', fontWeight: 'bold' }}>Rescribe</div>
+          <div style={{ fontSize: "1.75rem",
+  fontWeight: "700",
+  letterSpacing: "-0.5px",
+  color: "#0F172A",         // Dark navy (feels strong & forward)
+  textTransform: "uppercase",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.08)" }}>Rescribe</div>
           <div style={{ display: 'flex', gap: '1rem' }}>
             <Link to="/login" style={{ textDecoration: 'none' }}>
               <button style={{ background: 'none', border: 'none', fontSize: '1rem', cursor: 'pointer', color: '#374151' }}>Log In</button>

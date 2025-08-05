@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { logout } from "./firebase";
+import { Link } from "react-router-dom";
 import GenerateOutput from "./components/GenerateOutput";
 import ViewHistory from "./components/ViewHistory";
 
@@ -30,7 +31,14 @@ export default function Dashboard({ user }) {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "3rem" }}>
-			<div style={{ fontSize: "1.55rem", fontWeight: "bold" }}>Rescribe</div>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+			<div style={{ fontSize: "1.75rem",
+  fontWeight: "700",
+  letterSpacing: "-0.5px",
+  color: "#0F172A",         // Dark navy (feels strong & forward)
+  textTransform: "uppercase",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.08)" }}>Rescribe</div>
+  </Link>
 			{[
             { label: "Generate Output", value: "generate" },
             { label: "View History", value: "history" },
