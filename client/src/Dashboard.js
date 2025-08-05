@@ -41,8 +41,10 @@ export default function Dashboard({ user }) {
               style={{
                 cursor: "pointer",
                 padding: "0.5rem 1rem",
+                borderLeft: '1px solid #e0e0e0',
+    borderRight: '1px solid #e0e0e0',
 				// borderBottom: activeTab === value ? "2px solid #3B82F6" : "2px solid transparent",
-                color: activeTab === value ? "#3B82F6" : "#111827",
+                color: activeTab === value ? "#2F52AC" : "#111827",
 				fontWeight: "bolder",
                 transition: "all 0.2s ease",
               }}
@@ -55,11 +57,12 @@ export default function Dashboard({ user }) {
           <button
             onClick={logout}
             style={{
-              backgroundColor: "#ef4444",
+              backgroundColor: "#283E92",
               color: "#fff",
               border: "none",
-              borderRadius: "0.5rem",
-              padding: "0.5rem 1rem",
+              borderRadius: "12px",
+              padding: "11px 18px",
+              boxShadow: '0 8px 22px rgba(59, 77, 219, 0.25)',
               cursor: "pointer",
               fontSize: "1rem",
             }}

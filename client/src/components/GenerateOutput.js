@@ -94,12 +94,13 @@ setResult(formatted);
     flexDirection: "column",
     gap: "1.5rem",
     padding: "3rem 1rem",
-    boxShadow: "0 12px 32px rgba(0, 0, 0, 0.15)"
+    boxShadow: "0 12px 32px rgba(0, 0, 0, 0.15)",
+    backgroundColor: "#d0e5ff55"
   }}
 >
  {/* Title Input */}
   <Box>
-  <Heading size="4" weight="550" mb="2">
+  <Heading size="5" weight="550" mb="2">
       Title
     </Heading>
     <Text size="2" color="gray">
@@ -114,7 +115,13 @@ setResult(formatted);
       variant="surface"
       radius="medium"
       resize="none"
-      style={{ minHeight: 40 }}
+      style={{ 
+        minHeight: 40,
+        borderRadius: '.3rem',
+        border: '1px solid #e5e7eb',
+        boxShadow: '0 0 1px rgba(59, 77, 219, 0.7)',
+        borderColor: '#666666',
+       }}
     />
   </Box>
 
@@ -122,7 +129,7 @@ setResult(formatted);
 
   {/* Content Input */}
   <Box>
-  <Heading size="4" weight="550" mb="2">
+  <Heading size="5" weight="550" mb="2">
       Long-form content
     </Heading>
     <Text size="2" color="gray">
@@ -137,7 +144,13 @@ setResult(formatted);
       variant="surface"
       radius="medium"
       resize="vertical"
-      style={{ minHeight: 400 }}
+      style={{ 
+        minHeight: 400,
+          borderRadius: '.3rem',
+          border: '1px solid #e5e7eb',
+          boxShadow: '0 0 1px rgba(59, 77, 219, 0.7)',
+          borderColor: '#666666',
+       }}
     />
     <Text size="1" align="right" color="gray" mt="2">
       Word count: {content.length}
@@ -148,7 +161,7 @@ setResult(formatted);
 
   {/* Checkbox Group */}
   <Box>
-  <Heading size="4" weight="550" mb="2">
+  <Heading size="5" weight="550" mb="2">
       Short-form content type
     </Heading>
     <Text size="2" color="gray">
@@ -173,7 +186,7 @@ setResult(formatted);
       disabled={isGenerating}
       onClick={handleGenerate}
       highContrast
-      style={{ width: "100%" }}
+      style={{ width: "100%", borderRadius: '12px', boxShadow: '0 8px 22px rgba(59, 77, 219, 0.25)' }}
     >
       {isGenerating ? (
         <Flex align="center" gap="2">
@@ -228,7 +241,7 @@ setResult(formatted);
         overflowY: "auto",
       }}
     >
-      <Text size="4" weight="bold" mb="4">
+      <Text size="4" weight="bold" mb="4" color="blue">
         Generated Outputs:
       </Text>
       <Box display="flex" flexDirection="column" gap="4">
