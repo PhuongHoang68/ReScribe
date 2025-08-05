@@ -6,6 +6,7 @@ import { Collapsible } from "radix-ui";
 export default function ViewHistory() {
   const [history, setHistory] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [openItemId, setOpenItemId] = useState(null);
 
   const visibleHistory = searchTerm
     ? history.filter((item) =>
@@ -81,100 +82,112 @@ export default function ViewHistory() {
               No history yet.
             </Text>
           ) : (
-            visibleHistory.map((item) => (
-              <Card key={item._id} style={{ marginTop: "1rem" }}>
-                <Collapsible.Root>
-                  <Collapsible.Trigger asChild>
-                    <Box
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-between",
-                        padding: "1rem",
-                        cursor: "pointer",
-                        gap: "0.5rem",
-                      }}
-                    >
-                      <Flex justify="between" align="center">
-  {/* Left group: Title + Badge */}
-  <Flex align="center" gap="2">
-    <Text weight="bold" style={{marginRight: "35px"}}>
-      {item.title?.charAt(0).toUpperCase() + item.title?.slice(1) || "(No Title)"}
-    </Text>
-    <Flex gap="2" align="center">
-      {item.outputs.map(platform => (
-        <Badge key={platform} variant="gray" radius="12px">
-          {platform}
-        </Badge>
-      ))}
-    </Flex>
-  </Flex>
-
-  {/* Date aligned to the right */}
-  <Text size="2" color="gray">
-    {new Date(item.createdAt).toLocaleString()}
-  </Text>
-</Flex>
-
-
-                      <Text
-                        size="2"
+            visibleHistory.map((item) => {
+              const isOpen = openItemId === item._id;
+            
+              return (
+                <Card key={item._id} style={{ marginTop: "1rem" }}>
+                  <Collapsible.Root
+                    open={isOpen}
+                    onOpenChange={(open) => {
+                      setOpenItemId(open ? item._id : null);
+                    }}
+                  >
+                    <Collapsible.Trigger asChild>
+                      <Box
                         style={{
-                          fontFamily: "inherit",
-                          overflow: "hidden",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 2,
-                          WebkitBoxOrient: "vertical",
-                          textOverflow: "ellipsis",
-                          lineHeight: "1.4",
-                          color: "#666",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "space-between",
+                          padding: "1rem",
+                          cursor: "pointer",
+                          gap: "0.5rem",
                         }}
                       >
-                        {item.result}
-                      </Text>
-                    </Box>
-                  </Collapsible.Trigger>
+                        {/* Title and Platform row */}
+                        <Flex justify="between" align="center">
+                          <Flex align="center" gap="2">
+                            <Text weight="bold" style={{ marginRight: "35px" }}>
+                              {item.title?.charAt(0).toUpperCase() + item.title?.slice(1) || "(No Title)"}
+                            </Text>
+                            <Flex gap="2" align="center">
+                              {item.outputs.map((platform) => (
+                                <Badge key={platform} variant="gray" radius="12px">
+                                  {platform}
+                                </Badge>
+                              ))}
+                            </Flex>
+                          </Flex>
+            
+                          <Text size="2" color="gray">
+                            {new Date(item.createdAt).toLocaleString()}
+                          </Text>
+                        </Flex>
+            
+                        {/* Conditional Preview */}
+                        {!isOpen && (
+                          <Text
+                            size="2"
+                            style={{
+                              fontFamily: "inherit",
+                              overflow: "hidden",
+                              display: "-webkit-box",
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: "vertical",
+                              textOverflow: "ellipsis",
+                              lineHeight: "1.4",
+                              color: "#666",
+                            }}
+                          >
+                            {item.result}
+                          </Text>
+                        )}
+                      </Box>
+                    </Collapsible.Trigger>
+            
+                    {/* Expanded Content */}
+                    <Collapsible.Content>
+                      <Box style={{ padding: "1rem", backgroundColor: "#f3f4f6", position: "relative" }}>
+                        <Button
+                          variant="soft"
+                          size="1"
+                          style={{
+                            position: "absolute",
+                            top: "0.5rem",
+                            right: "0.5rem",
+                            zIndex: 1,
+                            background: "#e5e7eb",
+                            border: "none",
+                            borderRadius: "0.5rem",
+                            padding: "0.3rem 0.6rem",
+                            cursor: "pointer",
+                            color: "#374151",
+                            marginTop: "0.6rem",
+                          }}
+                          onClick={() => navigator.clipboard.writeText(item.result)}
+                        >
+                          <CopyIcon style={{ width: 14, height: 14, marginRight: "0.3rem", verticalAlign: "middle" }} />
+                          Copy
+                        </Button>
+            
+                        <pre
+                          style={{
+                            whiteSpace: "pre-wrap",
+                            margin: 0,
+                            fontSize: "0.875rem",
+                            lineHeight: "1.4",
+                            color: "#666",
+                          }}
+                        >
+                          {item.result}
+                        </pre>
+                      </Box>
+                    </Collapsible.Content>
+                  </Collapsible.Root>
+                </Card>
+              );
+            })
 
-                  <Collapsible.Content>
-                    <Box style={{ padding: "1rem", backgroundColor: "#f3f4f6", position: "relative" }}>
-                      <Button
-                        variant="soft"
-                        size="1"
-                        style={{
-                          position: "absolute",
-                          top: "0.5rem",
-                          right: "0.5rem",
-                          zIndex: 1,
-                          background: '#e5e7eb',
-            border: 'none',
-            borderRadius: '0.5rem',
-            padding: '0.3rem 0.6rem',
-            cursor: 'pointer',
-            color: '#374151',
-            marginTop: '0.6rem'
-                        }}
-                        onClick={() => navigator.clipboard.writeText(item.result)}
-                      >
-                        <CopyIcon style={{ width: 14, height: 14, marginRight: '0.3rem', verticalAlign: 'middle' }} />
-                        Copy
-                      </Button>
-
-                      <pre
-                        style={{
-                          whiteSpace: "pre-wrap",
-                          margin: 0,
-                          fontSize: "0.875rem",
-                          lineHeight: "1.4",
-                          color: "#666",
-                        }}
-                      >
-                        {item.result}
-                      </pre>
-                    </Box>
-                  </Collapsible.Content>
-                </Collapsible.Root>
-              </Card>
-            ))
           )}
         </ScrollArea>
       </Box>
