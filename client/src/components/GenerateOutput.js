@@ -76,10 +76,9 @@ setResult(formatted);
       }
   };
 
-  useEffect(() => {
-    console.log("content", content);
-    console.log("title", title)
-  }, [content, title])
+useEffect(() => {
+  console.log("result", result);
+}, [result])
 
   return (
 <Flex justify="center" direction={{ initial: "column", lg: "row",  }} gap="6" pr="6" pl="6" pb="6" >

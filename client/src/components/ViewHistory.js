@@ -14,6 +14,44 @@ export default function ViewHistory() {
       )
     : history;
 
+    function formatResultToJSX(result) {
+      if (!result) return null;
+    
+      const lines = result.split('\n');
+    
+      return lines.map((line, idx) => {
+        // Match section headers like: ### Twitter Thread
+        const sectionHeader = line.match(/^###\s*(.+)$/);
+        if (sectionHeader) {
+          return (
+            <div
+              key={idx}
+              style={{
+                color: '#2563eb',       // Tailwind's text-blue-600
+                fontWeight: 600,
+                marginBottom: '0.5rem',
+                fontSize: '1rem'
+              }}
+            >
+              {sectionHeader[1]}
+            </div>
+          );
+        }
+    
+        return (
+          <div key={idx} style={{ marginBottom: '0.4rem' }}>
+            {line}
+          </div>
+        );
+      });
+    }
+    
+    
+    
+    
+    
+    
+
   useEffect(() => {
     const fetchedData = async () => {
       try {
@@ -29,6 +67,10 @@ export default function ViewHistory() {
     };
     fetchedData();
   }, []);
+
+  useEffect(() => {
+    console.log("history", history)
+  }, [history])
 
   return (
     <Flex justify="center" direction={{ initial: "column", lg: "row" }} gap="6" pr="6" pl="6" pb="6">
@@ -132,19 +174,21 @@ export default function ViewHistory() {
                               fontFamily: "inherit",
                               overflow: "hidden",
                               display: "-webkit-box",
-                              WebkitLineClamp: 2,
+                              WebkitLineClamp: 1,
                               WebkitBoxOrient: "vertical",
                               textOverflow: "ellipsis",
                               lineHeight: "1.4",
                               backgroundColor: "#F9FAFB", // light neutral background for contrast
                               border: "1px solid #E5E7EB", // subtle border
-                              borderRadius: "8", // smooth corners
+                              borderRadius: "8px", // smooth corners
                               padding: "20px",
                               marginBottom: "20px",
+                              minHeight: "40px",
                               boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)", // soft lift
                             }}
                           >
-                            {item.result}
+                            {formatResultToJSX(item.result)}
+
                           </Text>
                         )}
                       </Box>
@@ -152,22 +196,21 @@ export default function ViewHistory() {
             
                     {/* Expanded Content */}
                     <Collapsible.Content>
-                      <Box style={{ padding: "1rem", backgroundColor: "#f3f4f6", position: "relative" }}>
+                      {/* <Box style={{ borderRadius: "8px", padding: ".5rem", backgroundColor: "#f3f4f6", position: "relative" }}> */}
                         <Button
                           variant="soft"
                           size="1"
                           style={{
                             position: "absolute",
-                            top: "0.5rem",
                             right: "0.5rem",
                             zIndex: 1,
                             background: "#e5e7eb",
-                            border: "none",
                             borderRadius: "0.5rem",
-                            padding: "0.3rem 0.6rem",
+                            padding: "0.5rem 0.8rem",
                             cursor: "pointer",
                             color: "#374151",
-                            marginTop: "0.6rem",
+                            marginTop: "1.2rem",
+                            marginRight: "2.5rem"
                           }}
                           onClick={() => navigator.clipboard.writeText(item.result)}
                         >
@@ -178,28 +221,20 @@ export default function ViewHistory() {
                         <pre
                           style={{
                             whiteSpace: "pre-wrap",
-                            // margin: 0,
-                            // fontSize: "0.875rem",
-                            // lineHeight: "1.4",
-                            // color: "#666",
                             fontFamily: "inherit",
-                            // overflow: "hidden",
-                            // display: "-webkit-box",
-                            // WebkitLineClamp: 2,
-                            // WebkitBoxOrient: "vertical",
-                            // textOverflow: "ellipsis",
                             lineHeight: "1.4",
                             backgroundColor: "#F9FAFB", // light neutral background for contrast
                             border: "1px solid #E5E7EB", // subtle border
-                            borderRadius: "8", // smooth corners
+                            borderRadius: "8px", // smooth corners
                             padding: "20px",
-                            marginBottom: "20px",
+                            margin: "17px",
                             boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)", // soft lift
                           }}
                         >
-                          {item.result}
+                          {formatResultToJSX(item.result)}
+
                         </pre>
-                      </Box>
+                      {/* </Box> */}
                     </Collapsible.Content>
                   </Collapsible.Root>
                 </Card>
