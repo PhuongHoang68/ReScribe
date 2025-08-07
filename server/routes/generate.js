@@ -42,18 +42,18 @@ router.post("/", async (req, res) => {
     }
 
     // Phase 2: Generate outputs with GPT-4
-    const prompt = `Here is the summary:\n${summary}\n\nGenerate the following formats:\n` +
+    const prompt = `Here is the summary:\n${summary}\n\n Always generate this *exact following format*:\n` +
       outputs.map((o) => {
         if (o === "twitter") {
           return `### Twitter Thread
-          [Write a short, viral Twitter thread with 3-6 tweets. Use hooks, emojis, and short lines.]
+          [Write a short, viral Twitter thread with 3-6 tweets. Use hooks, emojis, and short lines. Avoid robotic phrases—make it sound like something a real expert content creator would post]
           `;
         } else if (o === "instagram") {
-          return `# Instagram Caption
-          [Short-form engaging text with emotion. Use line breaks. End with 5-10 SEO-relevant hashtags.]`;
+          return `### Instagram Caption
+          [Short-form engaging text with emotion. Use line breaks. End with 5-10 SEO-relevant hashtags. Avoid robotic phrases—make it sound like something a real expert content creator would post]`;
         } else if (o === "linkedin") {
           return `### LinkedIn Post
-          [Professional tone. 3–5 paragraphs. Add a CTA at the end.]`;
+          [Professional tone. 3–5 paragraphs. Add a CTA at the end. Avoid robotic phrases—make it sound like something a real expert content creator would post]`;
         } else {
           return `- ${o}`;
         }

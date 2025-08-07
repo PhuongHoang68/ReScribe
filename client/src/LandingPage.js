@@ -36,7 +36,7 @@ export default function LandingPage() {
             <p style={{ fontSize: '1.125rem', color: '#4b5563', maxWidth: '40ch' }}>
               AI Content Repurposer - Turn your long-form content into short, platform-ready posts in seconds.
             </p>
-            <button className= "getting-started">
+            <button className= "getting-started" color="#0D74CE">
               Get Started
               </button>
           </div>
@@ -161,7 +161,7 @@ export default function LandingPage() {
       [
         <TwitterLogoIcon
           key="icon-twitter"
-          style={{ width: 24, height: 24, color: '#4B5563', flexShrink: 0 }}
+          style={{ width: 24, height: 24, color: '#0090FF', flexShrink: 0 }}
         />,
         'Tweet',
         'AI is like coffee. It helps me power through content creation!',
@@ -169,7 +169,7 @@ export default function LandingPage() {
       [
         <LinkedInLogoIcon
           key="icon-linkedin"
-          style={{ width: 24, height: 24, color: '#4B5563', flexShrink: 0 }}
+          style={{ width: 24, height: 24, color: '#0D74CE', flexShrink: 0 }}
         />,
         'LinkedIn Post',
         'I recently shared the benefits of AI in content repurposing ...',
@@ -177,7 +177,7 @@ export default function LandingPage() {
       [
         <InstagramLogoIcon
           key="icon-instagram"
-          style={{ width: 24, height: 24, color: '#4B5563', flexShrink: 0 }}
+          style={{ width: 24, height: 24, color: '#A144AF', flexShrink: 0 }}
         />,
         'Instagram',
         'Repurposing content just got easier! Top 3 tips to maximize reach...',

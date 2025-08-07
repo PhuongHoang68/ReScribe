@@ -52,7 +52,7 @@ export default function Dashboard({ user }) {
                 borderLeft: '1px solid #e0e0e0',
     borderRight: '1px solid #e0e0e0',
 				// borderBottom: activeTab === value ? "2px solid #3B82F6" : "2px solid transparent",
-                color: activeTab === value ? "#2F52AC" : "#111827",
+                color: activeTab === value ? "#113264" : "#111827",
 				fontWeight: "bolder",
                 transition: "all 0.2s ease",
               }}

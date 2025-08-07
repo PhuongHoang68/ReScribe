@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { TextField, Box, Text, Badge, Card, Button, Heading, Separator, Flex, ScrollArea } from "@radix-ui/themes";
-import { MagnifyingGlassIcon, CopyIcon } from "@radix-ui/react-icons";
-import { Collapsible } from "radix-ui";
+import { MagnifyingGlassIcon, CopyIcon, CheckCircledIcon } from "@radix-ui/react-icons";
+import { Checkbox, Collapsible } from "radix-ui";
 
 export default function ViewHistory() {
   const [history, setHistory] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [openItemId, setOpenItemId] = useState(null);
+  // const [copied, setCopied] = useState(false);
+
+  // const handleCopy = (result) => {
+  //   const formattedText = Object.entries(result)
+  //   .map(([heading, content]) => `${heading}\n${content.trim()}`)
+  //   .join('\n\n');
+  //   const allText = JSON.stringify(formattedText, null, 2);
+  //   navigator.clipboard.writeText(allText);
+  //   setCopied(true);
+  //   setTimeout(() => setCopied(false), 4000); // Reset after 2 seconds
+  // };
 
   const visibleHistory = searchTerm
     ? history.filter((item) =>
@@ -197,7 +208,7 @@ export default function ViewHistory() {
                     {/* Expanded Content */}
                     <Collapsible.Content>
                       {/* <Box style={{ borderRadius: "8px", padding: ".5rem", backgroundColor: "#f3f4f6", position: "relative" }}> */}
-                        <Button
+                        {/* <Button
                           variant="soft"
                           size="1"
                           style={{
@@ -212,11 +223,25 @@ export default function ViewHistory() {
                             marginTop: "1.2rem",
                             marginRight: "2.5rem"
                           }}
-                          onClick={() => navigator.clipboard.writeText(item.result)}
+                          // onClick={()=> handleCopy(item.result)}
+                          onClick={() => navigator.clipboard.writeText(JSON.stringify(result, null, 2))}
+                          onClick=navigator.clipboard.writeText(allText)
                         >
-                          <CopyIcon style={{ width: 14, height: 14, marginRight: "0.3rem", verticalAlign: "middle" }} />
-                          Copy
-                        </Button>
+                          
+                          {/* <CopyIcon style={{ width: 14, height: 14, marginRight: "0.3rem", verticalAlign: "middle" }} />
+                          Copy */}
+                          {/* {copied ? (
+        <>
+          <CheckCircledIcon style={{ width: 14, height: 14, marginRight: "0.3rem", verticalAlign: "middle" }} />
+          Copied
+        </>
+      ) : (
+        <>
+          <CopyIcon style={{ width: 14, height: 14, marginRight: "0.3rem", verticalAlign: "middle" }} />
+          Copy
+        </>
+      )}
+                        </Button> */} 
             
                         <pre
                           style={{

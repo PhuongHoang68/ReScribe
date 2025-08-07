@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { CheckboxGroup } from "@radix-ui/themes";
+import { Checkbox, CheckboxGroup } from "@radix-ui/themes";
 import "./styles.css";
 import { Box, Progress, Heading, Flex, Separator, Text, TextArea, Button } from "@radix-ui/themes";
+import { CopyIcon, CheckCircledIcon } from "@radix-ui/react-icons";
 
 
 
@@ -20,7 +21,15 @@ export default function GenerateOutput() {
   //progress bar raidx
   const [progress, setProgress] = useState(0);
   const [isGenerating, setIsGenerating] = useState(false);
-  //
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    const allText = JSON.stringify(result, null, 2);
+    navigator.clipboard.writeText(allText);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 4000); // Reset after 2 seconds
+  };
+
 
 
 
@@ -235,15 +244,50 @@ useEffect(() => {
         border: "1px solid #e5e7eb",
         borderRadius: 8,
         background: "white",
-        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.05)",
-        maxHeight: "80vh",
+        // maxHeight: "80vh",
+        minWidth: "50%",
         overflowY: "auto",
+        gap: "1.5rem",
+    padding: "3rem 1rem",
+    boxShadow: "0 12px 32px rgba(0, 0, 0, 0.15)",
       }}
     >
-      <Text size="4" weight="bold" mb="4" color="blue">
+      <Button
+                          variant="soft"
+                          size="1"
+                          style={{
+                            position: "absolute",
+                            right: "0.5rem",
+                            zIndex: 1,
+                            background: "#e5e7eb",
+                            borderRadius: "0.5rem",
+                            padding: "0.5rem 0.8rem",
+                            cursor: "pointer",
+                            color: "#374151",
+                            marginTop: "1.2rem",
+                            marginRight: "2.5rem"
+                          }}
+                          // onClick={() => navigator.clipboard.writeText(JSON.stringify(result, null, 2))}
+                          onClick={handleCopy}
+                        >
+                          {/* <CopyIcon style={{ width: 14, height: 14, marginRight: "0.3rem", verticalAlign: "middle" }} />
+                          Copy */}
+                          {copied ? (
+        <>
+          <CheckCircledIcon style={{ width: 14, height: 14, marginRight: "0.3rem", verticalAlign: "middle" }} />
+          Copied
+        </>
+      ) : (
+        <>
+          <CopyIcon style={{ width: 14, height: 14, marginRight: "0.3rem", verticalAlign: "middle" }} />
+          Copy
+        </>
+      )}
+                        </Button>
+      <Text weight="bold" mb="2" color="blue"  size="5" >
         Generated Outputs:
       </Text>
-      <Box display="flex" flexDirection="column" gap="4">
+      <Box display="flex" flexDirection="column" gap="4" mt="2">
         {Object.entries(result).map(([platform, text]) => (
           <Box key={platform}>
             <Text weight="bold" color="blue">
