@@ -107,6 +107,10 @@ export default function Login() {
 							Create an account
 						</Button> */}
 						{/* <Button tabIndex={tabIndex} onClick={{handleLogin}}>Sign in</Button> */}
+						<Link href="/signup" style={{ textDecoration: 'none' }}>
+						<Button  className="auth-button" style={{backgroundColor: "#0D74CE"}}>Create Account</Button>
+						</Link>
+
             <Button  className="auth-button" onClick={handleLogin}>Log In</Button>
 					</Flex>
 				</Card>

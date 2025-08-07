@@ -36,9 +36,12 @@ export default function LandingPage() {
             <p style={{ fontSize: '1.125rem', color: '#4b5563', maxWidth: '40ch' }}>
               AI Content Repurposer - Turn your long-form content into short, platform-ready posts in seconds.
             </p>
+            <Link to="/login" style={{ textDecoration: 'none' }}>
             <button className= "getting-started" color="#0D74CE">
               Get Started
               </button>
+              </Link>
+              
           </div>
 
           {/* Right Side */}
