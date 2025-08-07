@@ -22,6 +22,9 @@ export default function GenerateOutput() {
   const [progress, setProgress] = useState(0);
   const [isGenerating, setIsGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [errorMessages, setErrorMessages] = useState([]);
+
+
 
   const handleCopy = () => {
     const allText = JSON.stringify(result, null, 2);
@@ -35,11 +38,31 @@ export default function GenerateOutput() {
 
   const handleGenerate = async () => {
     //trim title necessary?
-    console.log("handle function hit")
-    if (selectedOutputs.length === 0 || content.trim() === "" || title.length === 0) return;
-    console.log("CONTENT", content);
-    console.log("SELECTEDOUTPUTS", selectedOutputs);
-    console.log("title", title)
+    const errors = [];
+
+  if (title.trim() === "") {
+    errors.push("Title is required.");
+  }
+
+  if (content.trim() === "") {
+    errors.push("Content cannot be empty.");
+  }
+
+  if (content.length > 20000) {
+    errors.push("Content must be under 20,000 characters.");
+  }
+
+  if (selectedOutputs.length === 0) {
+    errors.push("Select at least one short-form output type.");
+  }
+
+  // If any errors, show them and return early
+  if (errors.length > 0) {
+    setErrorMessages(errors);
+    return;
+  }
+
+  setErrorMessages([]);
 
     //progress bar
     setIsGenerating(true);
@@ -73,6 +96,8 @@ setResult(formatted);
 
     } catch (error) {
       console.error("Error generating content:", error);
+      setErrorMessages(["Something went wrong while generating content."]);
+
     } finally {
         //progress bar
         clearInterval(interval);
@@ -187,6 +212,27 @@ useEffect(() => {
   <Separator size="4" color="gray" />
 
   {/* Button + Progress */}
+  {errorMessages.length > 0 && (
+  <Box
+  p="3"
+  style={{
+    backgroundColor: "#ffe4e6",
+    color: "#7f1d1d",
+    border: "1px solid #fecaca",
+    borderRadius: "8px",
+    fontSize: "14px",
+    fontWeight: "500",
+    marginBottom: "0.5rem"
+  }}
+>
+  <Text mt="0.8rem" pl="1.5rem" weight="bold" size="3">Please fix the following:</Text>
+  <ul style={{ paddingLeft: "1.8rem", marginTop: "0.5rem" }}>
+    {errorMessages.map((msg, index) => (
+      <li key={index}>{msg}</li>
+    ))}
+  </ul>
+</Box>
+)}
   <Box>
     <Button
       size="3"
