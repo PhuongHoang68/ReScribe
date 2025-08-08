@@ -3,16 +3,32 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run dev --prefix server\" \"npm start --prefix client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "concurrently": "^9.2.0",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.0",
+    "express": "^5.1.0",
     "firebase": "^11.10.0",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.16.4",
+    "openai": "^5.10.1",
     "radix-ui": "^1.4.2"
-  }
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhuongHoang68/ReScribe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PhuongHoang68/ReScribe/issues"
+  },
+  "homepage": "https://github.com/PhuongHoang68/ReScribe#readme",
+  "description": ""
 }

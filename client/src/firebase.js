@@ -36,7 +36,9 @@ export const register = async (email, password) => {
   };
   
   export const login = async (email, password) => {
+    console.log("hit login route")
     const result = await signInWithEmailAndPassword(auth, email, password);
+    console.log("result", "auth", result, auth)
     return result.user;
   };
   

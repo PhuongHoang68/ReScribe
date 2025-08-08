@@ -1,454 +1,244 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { TwitterLogoIcon, LinkedInLogoIcon, InstagramLogoIcon, CopyIcon, CheckCircledIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+
+
 
 export default function LandingPage() {
-    return (
-        <div className="App">
-      <div className="Content">
-        {/* header */}
-      <header style=
-      {{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: "space-between",
-    maxWidth: '100%',
-    height: "2rem",
-    // padding: "0px 35px 0px 35px"
-    padding: '0.5rem 1rem 0 1rem',
-    // marginBottom: '2rem',
-  }}>
-        {/* <div style= {{paddingRight: "8rem"}}>Rescribe</div>
-        <div >
-          <button></button>
-          <button></button>
-        </div>
-      </header>  */}
-            <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Rescribe</div>
+  return (
+    <div className="App" style={{ fontFamily: 'sans-serif', backgroundColor: '#f9fafb' }}>
+      <div className="Content" style={{ maxWidth: '1600px', margin: '0 auto' }}>
+        {/* Header */}
+        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 2rem' }}>
+          <div style={{ fontSize: "1.75rem",
+  fontWeight: "700",
+  letterSpacing: "-0.5px",
+  color: "#0F172A",         // Dark navy (feels strong & forward)
+  textTransform: "uppercase",
+  textShadow: "0 1px 2px rgba(0, 0, 0, 0.08)" }}>Rescribe</div>
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+              <button style={{ background: 'none', border: 'none', fontSize: '1rem', cursor: 'pointer', color: '#374151' }}>Log In</button>
+            </Link>
+            <Link to="/signup" style={{ textDecoration: 'none' }}>
+              <button className="signup-button" >
+              {/* style={{ backgroundColor: '#2563eb', border: 'none', borderRadius: '0.5rem', padding: '0.5rem 1rem', fontSize: '1rem', cursor: 'pointer', color: '#fff' }}> */}
+                Sign Up
+                </button>
+            </Link>
+          </div>
+        </header>
 
-<div style={{ display: 'flex', gap: '1rem' }}>
-<Link to="/login" style={{ textDecoration: 'none' }}>
-  <button
-    style={{
-      background: 'none',
-      border: 'none',
-      color: '#000',
-      fontSize: '1rem',
-      cursor: 'pointer',
-    }}
-  >
-    Log In
-  </button>
-  </Link>
-  <Link to="/signup" style={{ textDecoration: 'none' }} >
-  <button
-    style={{
-      backgroundColor: '#ccc',
-      border: 'none',
-      borderRadius: '0.5rem',
-      padding: '0.5rem 1rem',
-      fontSize: '1rem',
-      cursor: 'pointer',
-      color: '#000',
-    }}
-  >
-    Sign Up
-  </button>
-  </Link>
-</div>
-</header>
+        <main style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem', padding: '3rem 2rem' }}>
+          {/* Left Side */}
+          <div style={{ flex: 1,  minWidth: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '1.5rem' }}>
+            <h1 className="app-name">ReScribe: Do More with Less</h1>
+            <p style={{ fontSize: '1.125rem', color: '#4b5563', maxWidth: '40ch' }}>
+              AI Content Repurposer - Turn your long-form content into short, platform-ready posts in seconds.
+            </p>
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+            <button className= "getting-started" color="#0D74CE">
+              Get Started
+              </button>
+              </Link>
+              
+          </div>
 
-
-      {/* Section 1 */}
-      {/* <div style={{height:"14rem", display: 'flex',
-    alignItems: 'center',
-    flexDirection: "column",
-    padding: "0px 35px 0px 35px"}} className="section1">
-      </div> */}
-      {/* Section 1 - Hero */}
-<div
-  className="section1"
+          {/* Right Side */}
+          <div style={{ flex: 1, minWidth: '300px', display: 'flex', flexDirection: 'column', gap: '4rem', justifyContent: "center" }}>
+            {/* How It Works */}
+            <div
   style={{
-    height: '12rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    padding: '0 2rem',
-    gap: '1rem',
+    padding: '1.5rem 1.5rem 2.2rem 1.5rem',
+    borderRadius: '1rem',
+    border: '1px solid #e5e7eb',
+    borderColor: '#2C2C2C',
+    boxShadow: '0 0 1px rgba(59, 77, 219, 0.7)',
+    background: '#fff'
   }}
 >
-  <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>
-    ReScribe: Do More with Less
-  </div>
-  <div style={{ fontSize: '1.1rem', maxWidth: '50ch', color: '#333' }}>
-    AI Content Repurposer - Turn your long-form content into short, platform-ready posts in seconds.
-  </div>
-  <button
+  <h2
     style={{
-      backgroundColor: '#007bff',
-      color: '#fff',
-      border: 'none',
-      borderRadius: '0.5rem',
-      padding: '0.75rem 1.5rem',
-      fontSize: '1rem',
-      cursor: 'pointer',
+      display: 'flex',
+      justifyContent: 'center',
+      fontSize: '1.125rem',
+      fontWeight: '600',
+      marginBottom: '1rem',
+      color: '#111827',
     }}
   >
-    Get Started
-  </button>
-</div>
-
-
-
-      {/* Section 2 */}
-      {/* <div style={{height:"14rem"}}>
-        a
-        </div> */}
-        {/* Section 2 - How it works */}
-<div
-  className="section2"
-  style={{
-    height: '13rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    padding: '0 2rem',
-    gap: '1.5rem',
-  }}
->
-  {/* Top Row */}
-  <div style={{ fontSize: '1.25rem', fontWeight: '600', color: '#000' }}>
     How it works:
-  </div>
-
-  {/* Bottom Row - 3 Steps */}
+  </h2>
   <div
     style={{
-      display: 'flex',
       justifyContent: 'center',
-      gap: '6rem',
+      display: 'flex',
+      gap: '1rem',
       flexWrap: 'wrap',
     }}
   >
-    {/* Step 1 */}
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'flex-start',
-        gap: '0.75rem',
-        width: '9rem',
-        textAlign: 'left',
-      }}
-    >
-      <div style={{ fontSize: '2rem' }}>📋</div>
-      <div style={{ fontSize: '1rem', color: '#333' }}>
-        Paste or Upload Your Content
-      </div>
-    </div>
+    {[
+      [<CopyIcon key="icon1" style={{ width: 24, height: 24, color: '#4B5563' }} />, 'Paste or Upload Your Content'],
+      [<CheckCircledIcon key="icon2" style={{ width: 24, height: 24, color: '#4B5563' }} />, 'Choose Output Formats'],
+      [<ArrowRightIcon key="icon3" style={{ width: 24, height: 24, color: '#4B5563' }} />, 'Get copy/paste-ready posts'],
 
-    {/* Step 2 */}
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'flex-start',
-        gap: '0.75rem',
-        width: '9rem',
-        textAlign: 'left',
-      }}
-    >
-      <div style={{ fontSize: '2rem' }}>✅</div>
-      <div style={{ fontSize: '1rem', color: '#333' }}>
-        Choose Output Formats
+    ].map(([icon, text], i) => (
+      <div
+        key={i}
+        style={{
+          display: 'flex',
+          gap: '0.5rem',
+          width: '8rem',
+          alignItems: 'center',
+          textAlign: 'left',
+          flexShrink: 0,
+        }}
+      >
+        <span style={{ fontSize: '1.4rem', lineHeight: 1 }}>{icon}</span>
+        <span
+          style={{
+            fontSize: '0.875rem',
+            color: '#4b5563',
+            lineHeight: 1.2,
+            fontWeight: 500,
+          }}
+        >
+          {text}
+        </span>
       </div>
-    </div>
-
-    {/* Step 3 */}
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'flex-start',
-        gap: '0.75rem',
-        width: '9rem',
-        textAlign: 'left',
-      }}
-    >
-      <div style={{ fontSize: '2rem' }}>➡️</div>
-      <div style={{ fontSize: '1rem', color: '#333' }}>
-        Get copy/paste-ready posts
-      </div>
-    </div>
+    ))}
   </div>
 </div>
 
 
-      {/* Section 3 */}
-      {/* <div style={{height:"14rem"}}>
-        d
-        </div> */}
+            {/* Supported Inputs */}
 
-{/* <div
-  className="section3"
-  style={{
-    height: '16rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    padding: '0 2rem',
-    gap: '1.25rem',
-  }}
-
-  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem', fontWeight: '600' }}>
-    <span style={{ fontSize: '1.5rem' }}>📝</span>
-    <span style={{ color: '#000' }}>Supported Inputs</span>
-  </div>
-
-
-  <div style={{ fontSize: '1rem', color: '#333', maxWidth: '60ch' }}>
-    Blog posts, Podcast transcripts, YouTube scripts, Email newsletters, Case studies, and more.
-  </div>
-
-  <div
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-      gap: '4rem',
-      flexWrap: 'wrap',
-    }}
-  >
-
-    <div
-      style={{
-        width: '9rem',
-        height: '6rem',
-        backgroundColor: '#fff',
-        border: '1px solid #ddd',
-        borderRadius: '0.5rem',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.08)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '1rem',
-        textAlign: 'center',
-      }}
-    >
-
-      <span>Column 1</span>
-    </div>
-
-
-    <div
-      style={{
-        width: '9rem',
-        height: '6rem',
-        backgroundColor: '#fff',
-        border: '1px solid #ddd',
-        borderRadius: '0.5rem',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.08)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '1rem',
-        textAlign: 'center',
-      }}
-    >
-
-      <span>Column 2</span>
-    </div>
-
-
-    <div
-      style={{
-        width: '9rem',
-        height: '6rem',
-        backgroundColor: '#fff',
-        border: '1px solid #ddd',
-        borderRadius: '0.5rem',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.08)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '1rem',
-        textAlign: 'center',
-      }}
-    >
-
-      <span>Column 3</span>
-    </div>
-  </div>
-</div> */}
-{/* Section 3 - Supported Inputs + Output Preview */}
 <div
-  className="section3"
   style={{
-    height: '16rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: '1.5rem 1.5rem 3rem 1.5rem',
+    borderRadius: '1rem',
+    border: '1px solid #e5e7eb',
+    background: '#fff',
     textAlign: 'center',
-    padding: '0 2rem',
-    gap: '1.25rem',
+    boxShadow: '0 0 1px rgba(59, 77, 219, 0.7)',
+    // boxShadow: '0 0 4px rgba(59, 77, 219, 0.15)',
+    borderColor: '#2C2C2C',
   }}
 >
-  {/* Row 1 - Title */}
-  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem', fontWeight: '600' }}>
-    <span style={{ fontSize: '1.5rem' }}>📝</span>
-    <span style={{ color: '#000' }}>Supported Inputs</span>
-  </div>
+  <h2
+    style={{
+      fontSize: '1.125rem',
+      fontWeight: '600',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem',
+      justifyContent: 'center',
+      color: '#111827',
+      marginBottom: '1rem',
+    }}
+  >
+    <CopyIcon style={{ width: 20, height: 20, color: '#4B5563' }} />
+    Supported Inputs
+  </h2>
 
-  {/* Row 2 - Subtitle */}
-  <div style={{ fontSize: '1rem', color: '#333', maxWidth: '60ch' }}>
+  <p
+    style={{
+      fontSize: '1rem',
+      color: '#4b5563',
+      marginBottom: '1.5rem',
+      lineHeight: 1.4,
+    }}
+  >
     Blog posts, Podcast transcripts, YouTube scripts, Email newsletters, Case studies, and more.
-  </div>
+  </p>
 
-  {/* Row 3 - Output Previews */}
   <div
     style={{
       display: 'flex',
+      gap: '1rem',
       justifyContent: 'center',
-      gap: '2rem',
-      flexWrap: 'wrap',
+      flexWrap: 'nowrap',
     }}
   >
-    {/* Twitter Box */}
-    <div
-      style={{
-        width: '10rem',
-        height: '10rem',
-        backgroundColor: '#fff',
-        border: '1px solid #ddd',
-        borderRadius: '0.5rem',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.08)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: '0.75rem',
-        boxSizing: 'border-box',
-        textAlign: 'left',
-      }}
-    >
-      <div style={{ fontWeight: '600', fontSize: '0.95rem' }}>🐦 Tweet</div>
-      <div style={{ fontSize: '0.9rem', color: '#333' }}>
-        AI is like coffee. It helps me power through content creation!
-      </div>
-      <button
+    {[
+      [
+        <TwitterLogoIcon
+          key="icon-twitter"
+          style={{ width: 24, height: 24, color: '#0090FF', flexShrink: 0 }}
+        />,
+        'Tweet',
+        'AI is like coffee. It helps me power through content creation!',
+      ],
+      [
+        <LinkedInLogoIcon
+          key="icon-linkedin"
+          style={{ width: 24, height: 24, color: '#0D74CE', flexShrink: 0 }}
+        />,
+        'LinkedIn Post',
+        'I recently shared the benefits of AI in content repurposing ...',
+      ],
+      [
+        <InstagramLogoIcon
+          key="icon-instagram"
+          style={{ width: 24, height: 24, color: '#A144AF', flexShrink: 0 }}
+        />,
+        'Instagram',
+        'Repurposing content just got easier! Top 3 tips to maximize reach...',
+      ],
+    ].map(([icon, title, text], i) => (
+      <div
+        key={i}
         style={{
-          alignSelf: 'flex-end',
-          backgroundColor: '#eee',
-          border: 'none',
+          width: '9rem',
+          minHeight: '9rem',
+          padding: '0.75rem',
+          background: '#f9fafb',
+          border: '1px solid #ddd',
           borderRadius: '0.5rem',
-          padding: '0.4rem 0.8rem',
-          fontSize: '0.85rem',
-          cursor: 'pointer',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          textAlign: 'left',
+          cursor: 'default',
         }}
       >
-        Copy
-      </button>
-    </div>
-
-    {/* LinkedIn Box */}
-    <div
-      style={{
-        width: '10rem',
-        height: '10rem',
-        backgroundColor: '#fff',
-        border: '1px solid #ddd',
-        borderRadius: '0.5rem',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.08)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: '0.75rem',
-        boxSizing: 'border-box',
-        textAlign: 'left',
-      }}
-    >
-      <div style={{ fontWeight: '600', fontSize: '0.95rem' }}>💼 LinkedIn Post</div>
-      <div style={{ fontSize: '0.9rem', color: '#333' }}>
-        I recently shared the benefits of AI in content repurposing ...
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600, color: '#374151' }}>
+          {icon}
+          <span style={{ fontSize: '0.95rem' }}>{title}</span>
+        </div>
+        <div style={{ fontSize: '0.85rem', color: '#4b5563', marginTop: '0.4rem', flexGrow: 1 }}>
+          {text}
+        </div>
+        <button
+          style={{
+            alignSelf: 'flex-end',
+            background: '#e5e7eb',
+            border: 'none',
+            borderRadius: '0.5rem',
+            padding: '0.3rem 0.6rem',
+            cursor: 'pointer',
+            fontSize: '0.8rem',
+            marginTop: '0.6rem',
+            color: '#374151',
+          }}
+          aria-label={`Copy ${title} text`}
+        >
+          <CopyIcon style={{ width: 14, height: 14, marginRight: '0.3rem', verticalAlign: 'middle' }} />
+          Copy
+        </button>
       </div>
-      <button
-        style={{
-          alignSelf: 'flex-end',
-          backgroundColor: '#eee',
-          border: 'none',
-          borderRadius: '0.5rem',
-          padding: '0.4rem 0.8rem',
-          fontSize: '0.85rem',
-          cursor: 'pointer',
-        }}
-      >
-        Copy
-      </button>
-    </div>
-
-    {/* Instagram Box */}
-    <div
-      style={{
-        width: '10rem',
-        height: '10rem',
-        backgroundColor: '#fff',
-        border: '1px solid #ddd',
-        borderRadius: '0.5rem',
-        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.08)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: '0.75rem',
-        boxSizing: 'border-box',
-        textAlign: 'left',
-      }}
-    >
-      <div style={{ fontWeight: '600', fontSize: '0.95rem' }}>📸 Instagram:</div>
-      <div style={{ fontSize: '0.9rem', color: '#333' }}>
-        Repurposing content just got easier! Top 3 tips to maximize reach...
-      </div>
-      <button
-        style={{
-          alignSelf: 'flex-end',
-          backgroundColor: '#eee',
-          border: 'none',
-          borderRadius: '0.5rem',
-          padding: '0.4rem 0.8rem',
-          fontSize: '0.85rem',
-          cursor: 'pointer',
-        }}
-      >
-        Copy
-      </button>
-    </div>
+    ))}
   </div>
 </div>
 
-        
+          </div>
+        </main>
 
-      {/* footer */}
-      {/* <footer style={{height: "3rem"}}>
-        q
-        </footer> */}
         {/* Footer */}
-<div
-  className="footer"
-  style={{
-    textAlign: 'center',
-    padding: '1rem 0 0.5rem 0',
-    fontSize: '0.95rem',
-    fontWeight: '500',
-    color: '#000',
-  }}
->
-  Built with React, Firebase, OpenAI API, MongoDB, Vercel
-</div>
-
-
-
+        <footer style={{ textAlign: 'center', padding: '1rem 0', fontSize: '0.875rem', color: '#6b7280' }}>
+          Built with React, Firebase, OpenAI API, MongoDB, Vercel
+        </footer>
       </div>
-      </div>
-
-    )
+    </div>
+  );
 }
