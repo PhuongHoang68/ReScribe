@@ -23,6 +23,7 @@ export default function GenerateOutput() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
 
 
 
@@ -77,7 +78,7 @@ export default function GenerateOutput() {
       //
 
     try {
-      const response = await fetch("http://localhost:5000/api/generate", {
+      const response = await fetch(`${API_BASE_URL}/api/generate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content, outputs: selectedOutputs, title }), // now an array
