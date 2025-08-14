@@ -1,8 +1,11 @@
 # Etsy-Seller-AI-App
 
 ![Badge](https://img.shields.io/badge/License-MIT-lightblue.svg)
+<img width="1440" height="900" alt="Screenshot 2025-08-11 at 1 35 05 PM" src="https://github.com/user-attachments/assets/0d1e0ba3-5a67-41ef-9991-053f7af17dd6" />
+<img width="1440" height="900" alt="Screenshot 2025-08-11 at 1 35 11 PM" src="https://github.com/user-attachments/assets/fd6aee29-e452-47aa-af14-b9feab6923a8" />
+<img width="1440" height="900" alt="Screenshot 2025-08-11 at 1 32 26 PM" src="https://github.com/user-attachments/assets/ebacdc7b-35ae-46a3-aad5-ee8796a07151" />
 
-![Final version of website](https://github.com/YourUsername/Etsy-Seller-AI-App/blob/main/client/src/assets/images/deployed-application.png)
+
 
 ## Table of Contents
 
