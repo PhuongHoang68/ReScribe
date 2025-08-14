@@ -1,10 +1,10 @@
-# Etsy-Seller-AI-App
+# Content-Repurposer-AI-App
 
 ![Badge](https://img.shields.io/badge/License-MIT-lightblue.svg)
-<img width="1440" height="900" alt="Screenshot 2025-08-11 at 1 35 05 PM" src="https://github.com/user-attachments/assets/0d1e0ba3-5a67-41ef-9991-053f7af17dd6" />
-<img width="1440" height="900" alt="Screenshot 2025-08-11 at 1 35 11 PM" src="https://github.com/user-attachments/assets/fd6aee29-e452-47aa-af14-b9feab6923a8" />
-<img width="1440" height="900" alt="Screenshot 2025-08-11 at 1 32 26 PM" src="https://github.com/user-attachments/assets/ebacdc7b-35ae-46a3-aad5-ee8796a07151" />
-
+<img width="1440" height="900" alt="Screenshot 2025-08-08 at 3 25 14 PM" src="https://github.com/user-attachments/assets/97e67636-ae5e-432f-af73-e6b367b9f2a0" />
+<img width="1440" height="900" alt="Screenshot 2025-08-11 at 1 35 05 PM" src="https://github.com/user-attachments/assets/4b3e6376-e2b2-4c03-810d-d2417394c713" />
+<img width="1440" height="900" alt="Screenshot 2025-08-11 at 1 35 11 PM" src="https://github.com/user-attachments/assets/b05132e6-aa26-418f-80a0-aec421d79d5d" />
+<img width="1440" height="900" alt="Screenshot 2025-08-11 at 1 32 26 PM" src="https://github.com/user-attachments/assets/453bd110-2f25-4de9-b1c0-9218be1fa4d5" />
 
 
 ## Table of Contents
@@ -22,29 +22,29 @@
 
 ## Description
 
-Full-stack MERN + AI-powered application designed to help new Etsy sellers launch and grow their shops by generating professional, high-converting shop and product content in minutes.
+Full-stack MERN + AI-powered application designed for marketers, creators, and content strategists to save hours by transforming long-form blog content into ready-to-share, platform-specific social media posts for Twitter, LinkedIn, and Instagram.
 
-The app streamlines branding, marketing copy, SEO, and visual design suggestions — all in one dashboard.
+The app ensures efficient content workflow by combining AI-powered rewriting with a simple, intuitive dashboard.
 
 ### User Story
-                As a new Etsy seller, 
-                I want an AI-powered content creation tool 
-                So that I can quickly set up a professional and attractive shop without spending hours on copywriting or design.
+                As a marketer or content creator,
+                I want a tool that can repurpose my long-form blog posts
+                So that I can quickly create social-media-ready content for multiple platforms instantly.
 
 ### Acceptance Criteria
-                GIVEN an Etsy seller AI assistant web app
-                WHEN I sign in with Google or email
-                THEN I can navigate to the Shop page to input my product type, target audience, price point, and brand positioning
-                WHEN I submit the Shop form
-                THEN I receive AI-generated shop name ideas, banner/icon visuals, shop announcements, shop policies, thank-you email templates, and a brand color palette, with options to open Canva or Ideogram for editing visuals
-                WHEN I navigate to the Product page
-                THEN I can enter product details (type, audience, tone, aesthetic, pricing strategy)
-                WHEN I submit the Product form
-                THEN I receive AI-generated product titles, descriptions, SEO tags, pricing ideas, and customer review/thank-you messages, with an option to open PlaceIt for mockups
-                WHEN results are generated
-                THEN the form collapses but can be toggled with "Show Form"
-                WHEN I revisit the app
-                THEN my past results are saved and can be accessed via "View Recent Search"
+                GIVEN a content repurposing AI web app
+                WHEN I log in with my secure account
+                THEN I can access a dashboard where I paste my long-form blog content
+                WHEN I input a title and select output types (Twitter, LinkedIn, Instagram)
+                THEN the AI generates platform-optimized social posts
+                WHEN I submit the form
+                THEN a progress bar displays while content is being generated
+                WHEN results are ready
+                THEN they appear on the right-hand side of the dashboard
+                WHEN I view my history
+                THEN I can search through and re-access my past generated content
+                WHEN I log out
+                THEN I am returned to the landing page
 
 ## Installation
 
@@ -57,13 +57,13 @@ The app streamlines branding, marketing copy, SEO, and visual design suggestions
 - MongoDB  
 - Express.js  
 - Node.js  
-- Clerk Authentication  
+- Firebase Authentication  
 - AI API (e.g., OpenAI)  
 - TailwindCSS  
 
 ## Website
 
-Deployed on Vercel: ⚠️ **Private Link** — This project is on-going, could be shown through live-walk through.
+⚠️ **Private Link** — This project is on-going, could be shown through live-walk through.
 
 ## License
 
